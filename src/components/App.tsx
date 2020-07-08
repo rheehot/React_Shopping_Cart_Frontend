@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import PageInterface from './PageInterface';
 
 class App extends React.Component<PageInterface, {}> {
