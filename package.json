@@ -1,0 +1,40 @@
+{
+    "name": "react_shopping_cart_frontend",
+    "version": "1.0.0",
+    "description": "🛒 Simply Shopping Cart Application Frontend with React, Redux ⚛︎",
+    "main": ".eslint.js",
+    "scripts": {
+        "start": "webpack-dev-server --mode development --open --hot",
+        "build": "webpack --mode production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alstn2468/React_Shopping_Cart_Frontend.git"
+    },
+    "keywords": [
+        "react",
+        "redux",
+        "typescript",
+        "shopping cart"
+    ],
+    "author": "alstn2468",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/alstn2468/React_Shopping_Cart_Frontend/issues"
+    },
+    "homepage": "https://github.com/alstn2468/React_Shopping_Cart_Frontend#readme",
+    "dependencies": {
+        "@types/react": "^16.9.41",
+        "@types/react-dom": "^16.9.8",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
+    "devDependencies": {
+        "html-webpack-plugin": "^4.3.0",
+        "ts-loader": "^7.0.5",
+        "typescript": "^3.9.6",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    }
+}
