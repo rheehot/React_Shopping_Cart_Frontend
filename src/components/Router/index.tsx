@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../Home';
 import Header from '../Header';
+import Product from '../Product';
 
 const RootRouter: React.FC = () => (
-    <BrowserRouter>
+    <HashRouter>
         <Header />
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/products" component={Home} />
-            <Route path="/cart" component={Home} />
+            <Route path="/products" exact component={Product} />
+            <Route path="/cart" exact component={Home} />
             <Redirect path="*" to="/" />
         </Switch>
-    </BrowserRouter>
+    </HashRouter>
 );
 
 export default RootRouter;
