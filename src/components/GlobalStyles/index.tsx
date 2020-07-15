@@ -8,6 +8,8 @@ const globalStyles = createGlobalStyle`
     *::before {
         box-sizing: border-box;
         border-radius: 0;
+        text-decoration: none;
+        color:#000000;
     }
 
     html {
@@ -15,7 +17,7 @@ const globalStyles = createGlobalStyle`
         height: 100%;
         overflow: scroll;
         background: #ffffff;
-        transition: all 0.25s linear;
+        transition: all 0.2s ease;
     }
 
     body {
