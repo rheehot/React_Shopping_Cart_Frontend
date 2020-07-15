@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ProductItemType } from './ProductType';
 import { AiFillHeart } from 'react-icons/ai';
 import { RiCoupon2Line } from 'react-icons/ri';
+import { FaCartPlus } from 'react-icons/fa';
 
 const ProductItemContainer = styled.li`
     display: inline-flex;
@@ -12,6 +13,17 @@ const ProductItemContainer = styled.li`
     margin: 15px;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+
+    &:hover {
+        .product-overlay {
+            opacity: 1;
+        }
+
+        .product-image {
+            transform: scale(1.1);
+        }
+    }
 `;
 
 const ProductImageContainer = styled.div`
@@ -19,19 +31,13 @@ const ProductImageContainer = styled.div`
     height: 250px;
     border-radius: 10px;
     overflow: hidden;
-
-    &:hover {
-        img {
-            transform: scale(1.1);
-        }
-    }
 `;
 
 const ProductImage = styled.img`
     width: 100%;
     height: 250px;
     object-fit: cover;
-    transition: transform 0.2s ease;
+    transition: transform 0.4s ease;
 `;
 
 const ProductDetailContainer = styled.div`
@@ -98,6 +104,35 @@ const Divisor = styled.hr`
     border: 1px solid rgb(242, 244, 245);
 `;
 
+const ProductOverlayContainer = styled.div`
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+`;
+
+const ProductOverlayIcon = styled(FaCartPlus)`
+    width: 3rem;
+    height: 3rem;
+    fill: rgba(255, 255, 255, 0.9);
+    margin-bottom: 6px;
+`;
+
+const ProductOverlayText = styled.div`
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
+    font-weight: bold;
+`;
+
 function ProductItem({
     id,
     title,
@@ -109,7 +144,7 @@ function ProductItem({
     return (
         <ProductItemContainer>
             <ProductImageContainer>
-                <ProductImage src={coverImage} />
+                <ProductImage src={coverImage} className="product-image" />
             </ProductImageContainer>
             <ProductDetailContainer>
                 <ProductTitle>{title}</ProductTitle>
@@ -135,6 +170,12 @@ function ProductItem({
                     )}
                 </ProductPriceContainer>
             </ProductDetailContainer>
+            <ProductOverlayContainer className="product-overlay">
+                <ProductOverlayIcon />
+                <ProductOverlayText>
+                    클릭 시 장바구니에 추가됩니다.
+                </ProductOverlayText>
+            </ProductOverlayContainer>
         </ProductItemContainer>
     );
 }
