@@ -10,6 +10,7 @@ const globalStyles = createGlobalStyle`
         border-radius: 0;
         text-decoration: none;
         color:#000000;
+        user-select: none;
     }
 
     html {
@@ -37,7 +38,7 @@ const globalStyles = createGlobalStyle`
     }
 
     .route-container {
-        padding-top: 10px;
+        padding: 20px 0;
     }
 `;
 
