@@ -24,7 +24,7 @@ const globalStyles = createGlobalStyle`
       background: #ffffff;
       color: #000000;
       width: 100%;
-      height: auto;
+      height: 100%;
       margin: 0;
       padding: 0;
       font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -33,7 +33,11 @@ const globalStyles = createGlobalStyle`
 
     #root {
         width: 100%;
-        height: auto;
+        height: 100%;
+    }
+
+    .route-container {
+        padding-top: 10px;
     }
 `;
 
