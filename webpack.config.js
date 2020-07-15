@@ -17,6 +17,14 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
             },
+            {
+                test: /\.(png|svg|jpe?g|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'images/',
+                },
+            },
         ],
     },
     plugins: [
@@ -24,4 +32,5 @@ module.exports = {
             template: './src/index.html',
         }),
     ],
+    devServer: { port: 3001 },
 };
