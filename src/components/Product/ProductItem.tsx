@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { ProductItemType } from './ProductType';
 import { AiFillHeart } from 'react-icons/ai';
-import coupons from '../../data/coupons';
+import { RiCoupon2Line } from 'react-icons/ri';
 
 const ProductItemContainer = styled.li`
     display: inline-flex;
@@ -63,12 +63,32 @@ const ProductScoreText = styled.span`
     color: rgb(133, 138, 141);
 `;
 
-const ProductPrice = styled.div`
+type ProductPriceType = {
+    availableCoupon: boolean;
+    color: string;
+};
+
+const ProductPriceContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const ProductPrice = styled.div<ProductPriceType>`
+    display: inline-flex;
     font-size: 12px;
     line-height: 20px;
     letter-spacing: -0.15px;
-    color: rgb(27, 28, 29);
+    color: ${(props) => props.color};
     font-weight: bold;
+    text-decoration: ${(props) =>
+        props.availableCoupon ? 'line-through' : 'none'};
+`;
+
+const CouponIcon = styled(RiCoupon2Line)`
+    fill: red;
+    height: 14px;
+    margin-left: 6px;
+    margin-right: 2px;
 `;
 
 const Divisor = styled.hr`
@@ -98,7 +118,22 @@ function ProductItem({
                     <ProductScoreText>{score}</ProductScoreText>
                 </ProductScore>
                 <Divisor />
-                <ProductPrice>{price}원</ProductPrice>
+                <ProductPriceContainer>
+                    <ProductPrice
+                        availableCoupon={availableCoupon}
+                        color="rgb(27, 28, 29)"
+                    >
+                        {price}원
+                    </ProductPrice>
+                    {availableCoupon && (
+                        <>
+                            <CouponIcon />
+                            <ProductPrice availableCoupon={false} color="red">
+                                쿠폰 적용 가능
+                            </ProductPrice>
+                        </>
+                    )}
+                </ProductPriceContainer>
             </ProductDetailContainer>
         </ProductItemContainer>
     );

@@ -36,10 +36,6 @@ const globalStyles = createGlobalStyle`
         width: 100%;
         height: 100%;
     }
-
-    .route-container {
-        padding: 20px 0;
-    }
 `;
 
 export default globalStyles;
