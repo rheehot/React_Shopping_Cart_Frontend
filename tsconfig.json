@@ -10,6 +10,10 @@
         "jsx": "react",
         "allowJs": true,
         "baseUrl": "./",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types"
+        ],
         "paths": {
             "*": [
                 "*",

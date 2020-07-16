@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Helmet as BaseHelmet } from 'react-helmet';
 import { HelmetProps } from 'components/Helmet/HelmetProps';
+import MetaImage from 'assets/images/meta-image.jpg';
+import Favicon from 'assets/images/favicon.ico';
 
 function Helmet({ title, description }: HelmetProps): React.ReactElement {
     const baseTitle = '준비물까지 챙겨주는 온라인 클래스';
@@ -14,6 +16,7 @@ function Helmet({ title, description }: HelmetProps): React.ReactElement {
                 name="description"
                 content={description ? description : baseDescription}
             />
+            <link rel="shortcut icon" href={Favicon} />
 
             <meta
                 property="og:title"
@@ -23,7 +26,7 @@ function Helmet({ title, description }: HelmetProps): React.ReactElement {
                 property="og:description"
                 content={description ? description : baseDescription}
             />
-            <meta property="og:image" content="" />
+            <meta property="og:image" content={MetaImage} />
 
             <meta
                 name="twitter:title"
@@ -33,7 +36,7 @@ function Helmet({ title, description }: HelmetProps): React.ReactElement {
                 name="twitter:description"
                 content={description ? description : baseDescription}
             />
-            <meta name="twitter:image" content="" />
+            <meta name="twitter:image" content={MetaImage} />
         </BaseHelmet>
     );
 }

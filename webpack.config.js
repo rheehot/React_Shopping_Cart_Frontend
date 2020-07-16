@@ -19,7 +19,7 @@ module.exports = (env) => ({
                 loader: 'ts-loader',
             },
             {
-                test: /\.(png|svg|jpe?g|gif)$/,
+                test: /\.(png|svg|jpe?g|gif|ico)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
