@@ -1,11 +1,14 @@
 import { createAction, createAsyncAction, ActionType } from 'typesafe-actions';
 import { ProductItemType } from '../components/Product/ProductType';
+import { ThunkAction } from 'redux-thunk';
+import productItems from '../data/productItems';
+import { ProductListState } from '../reducers/productListReducer';
 
-export const FETCH_PRODUCT_LIST_REQUEST = 'FETCH_PRODUCT_LIST_REQUEST';
-export const FETCH_PRODUCT_LIST_SUCCESS = 'FETCH_PRODUCT_LIST_SUCCESS';
-export const FETCH_PRODUCT_LIST_FAILURE = 'FETCH_PRODUCT_LIST_FAILURE';
+export const FETCH_PRODUCT_LIST_REQUEST = '@product/FETCH_PRODUCT_LIST_REQUEST';
+export const FETCH_PRODUCT_LIST_SUCCESS = '@product/FETCH_PRODUCT_LIST_SUCCESS';
+export const FETCH_PRODUCT_LIST_FAILURE = '@product/FETCH_PRODUCT_LIST_FAILURE';
 export const CHANGE_PRODUCT_LIST_CURRENT_PAGE =
-    'CHANGE_PRODUCT_LIST_CURRENT_PAGE';
+    '@product/CHANGE_PRODUCT_LIST_CURRENT_PAGE';
 
 /* ================================== *
  * 상품 목록을 가져오는 비동기 액션   *
@@ -17,7 +20,7 @@ export const fetchProductList = createAsyncAction(
     FETCH_PRODUCT_LIST_REQUEST,
     FETCH_PRODUCT_LIST_SUCCESS,
     FETCH_PRODUCT_LIST_FAILURE,
-)<number, ProductItemType[], string>();
+)<void, ProductItemType[], string>();
 
 /* ============================== *
  * 현재 페이지 번호를 바꾸는 액션 *
@@ -30,3 +33,25 @@ export const changeProductListCurrentPage = createAction(
 const actions = { fetchProductList, changeProductListCurrentPage };
 
 export type ProductListAction = ActionType<typeof actions>;
+
+export function getProductList(
+    page: number,
+): ThunkAction<Promise<void>, ProductListState, null, ProductListAction> {
+    return async (dispatch) => {
+        const { request, success, failure } = fetchProductList;
+
+        dispatch(request());
+
+        try {
+            let productList = productItems;
+
+            await setTimeout(() => {
+                productList.slice(page * 5, page * 5 + 5);
+            }, 1000);
+
+            dispatch(success(productList));
+        } catch (e) {
+            dispatch(failure(e));
+        }
+    };
+}
