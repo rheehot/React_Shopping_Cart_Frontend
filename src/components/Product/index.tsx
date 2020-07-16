@@ -10,7 +10,7 @@ import { getProductList } from 'actions/productListAction';
 
 const ProductContainer = styled.div`
     width: 80%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     scrollbar-width: none;
 `;
@@ -22,8 +22,7 @@ const ProductListContainer = styled.ul`
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
-    width: 100%;
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
 `;
 
@@ -45,12 +44,10 @@ function Product(): React.ReactElement {
                     <ProductItem key={item.id} {...item} />
                 ))}
             </ProductListContainer>
-            {!loading && (
-                <Pagination
-                    currentPage={currentPage}
-                    range={Math.ceil(itemCounts / 5)}
-                />
-            )}
+            <Pagination
+                currentPage={currentPage}
+                range={Math.ceil(itemCounts / 5)}
+            />
             <Loading isLoading={loading} />
         </ProductContainer>
     );

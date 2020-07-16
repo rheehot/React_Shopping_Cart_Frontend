@@ -1,7 +1,40 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeProductListCurrentPage } from 'actions/productListAction';
 import { PaginationProp } from 'components/Pagination/PaginationProp';
+
+const PaginationContainer = styled.div`
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+type PaginationButtonProp = {
+    isActive: boolean;
+    isFirst: boolean;
+    isLast: boolean;
+};
+
+const PaginationButton = styled.button<PaginationButtonProp>`
+    height: 100%;
+    width: 40px;
+    margin: 0 5px;
+    color: ${(props) => (props.isActive ? '#ffffff' : '#000000')};
+    background-color: ${(props) => (props.isActive ? '#000000' : '#f2f2f2')};
+    visibility: ${(props) =>
+        props.isFirst || props.isLast ? 'hidden' : 'visible'};
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+
+    &:focus {
+        outline: none;
+    }
+`;
 
 function Pagination({
     currentPage,
@@ -41,34 +74,42 @@ function Pagination({
     }
 
     return (
-        <div className="container">
-            <button
+        <PaginationContainer>
+            <PaginationButton
                 disabled={currentPage <= 1}
                 onClick={() =>
                     dispatch(changeProductListCurrentPage(currentPage - 1))
                 }
+                isActive={false}
+                isFirst={currentPage === 1}
+                isLast={false}
             >
                 {'<'}
-            </button>
+            </PaginationButton>
             {pattern.map((label) => (
-                <button
-                    className={currentPage === label ? 'active' : ''}
+                <PaginationButton
                     onClick={() =>
                         dispatch(changeProductListCurrentPage(label))
                     }
+                    isActive={currentPage === label}
+                    isFirst={false}
+                    isLast={false}
                 >
                     {label}
-                </button>
+                </PaginationButton>
             ))}
-            <button
+            <PaginationButton
                 disabled={currentPage >= range}
                 onClick={() =>
                     dispatch(changeProductListCurrentPage(currentPage + 1))
                 }
+                isActive={false}
+                isFirst={false}
+                isLast={currentPage === range}
             >
                 {'>'}
-            </button>
-        </div>
+            </PaginationButton>
+        </PaginationContainer>
     );
 }
 
