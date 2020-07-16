@@ -26,6 +26,10 @@ const Item = styled.li<ItemProps>`
     border-bottom: 3px solid
         ${(props) => (props.current ? '#000000' : 'transparent')};
     transition: border-bottom 0.5s ease-in-out;
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 const SLink = styled(Link)`
