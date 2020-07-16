@@ -36,7 +36,6 @@ module.exports = (env) => ({
                 env.NODE_ENV || 'development',
             ),
         }),
-        new webpack.EnvironmentPlugin(['NODE_ENV']),
     ],
     devServer: { port: 3001 },
 });
