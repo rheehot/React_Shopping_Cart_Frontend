@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../reducers';
-import ProductItem from './ProductItem';
-import { getProductList } from '../../actions/productListAction';
+import { RootState } from 'reducers';
+import ProductItem from 'components/Product/ProductItem';
+import { getProductList } from 'actions/productListAction';
 
 const ProductContainer = styled.div`
     width: 80%;

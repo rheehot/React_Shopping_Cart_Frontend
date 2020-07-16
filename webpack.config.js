@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env) => ({
     entry: './src/index.tsx',
     resolve: {
+        modules: [path.join(__dirname, 'src'), 'node_modules'],
         extensions: ['.ts', '.tsx', '.js'],
     },
     output: {

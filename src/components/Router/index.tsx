@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import Home from '../Home';
-import Header from '../Header';
-import Product from '../Product';
+import Home from 'components/Home';
+import Header from 'components/Header';
+import Product from 'components/Product';
 
 const RootRouter: React.FC = () => (
     <HashRouter>

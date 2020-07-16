@@ -4,9 +4,9 @@ import {
     FETCH_PRODUCT_LIST_SUCCESS,
     FETCH_PRODUCT_LIST_FAILURE,
     ProductListAction,
-} from '../actions/productListAction';
-import { ProductItemType } from '../components/Product/ProductType';
-import { createReducer, action } from 'typesafe-actions';
+} from 'actions/productListAction';
+import { ProductItemType } from 'components/Product/ProductType';
+import { createReducer } from 'typesafe-actions';
 
 export type ProductListState = {
     loading: boolean;

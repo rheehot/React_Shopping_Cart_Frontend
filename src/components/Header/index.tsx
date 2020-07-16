@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Link, withRouter } from 'react-router-dom';
-import { ItemProps } from './HeaderType';
-import logoImage from '../../assets/images/logo.png';
+import { ItemProps } from 'components/Header/HeaderType';
+import logoImage from 'assets/images/logo.png';
 
 const Header = styled.header`
     display: flex;

@@ -1,8 +1,8 @@
 import { createAction, createAsyncAction, ActionType } from 'typesafe-actions';
-import { ProductItemType } from '../components/Product/ProductType';
+import { ProductItemType } from 'components/Product/ProductType';
 import { ThunkAction } from 'redux-thunk';
-import productItems from '../data/productItems';
-import { ProductListState } from '../reducers/productListReducer';
+import productItems from 'data/productItems';
+import { ProductListState } from 'reducers/productListReducer';
 
 export const FETCH_PRODUCT_LIST_REQUEST = '@product/FETCH_PRODUCT_LIST_REQUEST';
 export const FETCH_PRODUCT_LIST_SUCCESS = '@product/FETCH_PRODUCT_LIST_SUCCESS';
