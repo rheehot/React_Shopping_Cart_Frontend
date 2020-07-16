@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import productItem from '../../data/productItem';
 import ProductItem from './ProductItem';
 
 const ProductContainer = styled.div`
@@ -17,12 +16,15 @@ const ProductListContainer = styled.ul`
 `;
 
 function Product(): React.ReactElement {
+    const productItem = [];
+
     return (
         <ProductContainer className="route-container">
             <ProductListContainer>
-                {productItem.map((item) => (
-                    <ProductItem key={item.id} {...item} />
-                ))}
+                {productItem &&
+                    productItem.map((item) => (
+                        <ProductItem key={item.id} {...item} />
+                    ))}
             </ProductListContainer>
         </ProductContainer>
     );
