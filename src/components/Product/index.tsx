@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { RootState } from 'reducers';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'reducers';
+import Helemt from 'components/Helmet';
 import ProductItem from 'components/Product/ProductItem';
 import { getProductList } from 'actions/productListAction';
 
@@ -28,6 +29,7 @@ function Product(): React.ReactElement {
 
     return (
         <ProductContainer className="route-container">
+            <Helemt title="PRODUCT" />
             <ProductListContainer>
                 {productState.loading ? (
                     <div>Loading</div>

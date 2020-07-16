@@ -3,9 +3,11 @@ import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Home from 'components/Home';
 import Header from 'components/Header';
 import Product from 'components/Product';
+import Helemt from 'components/Helmet';
 
 const RootRouter: React.FC = () => (
     <HashRouter>
+        <Helemt />
         <Header />
         <Switch>
             <Route path="/" exact component={Home} />
