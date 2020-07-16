@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Helemt from 'components/Helmet';
 import ProductItem from 'components/Product/ProductItem';
 import Pagination from 'components/Pagination';
+import Loading from 'components/Loading';
 import { getProductList } from 'actions/productListAction';
 
 const ProductContainer = styled.div`
@@ -40,18 +41,15 @@ function Product(): React.ReactElement {
         <ProductContainer className="route-container">
             <Helemt title="PRODUCT" />
             <ProductListContainer>
-                {loading ? (
-                    <div>Loading</div>
-                ) : (
-                    productItems.map((item) => (
-                        <ProductItem key={item.id} {...item} />
-                    ))
-                )}
+                {productItems.map((item) => (
+                    <ProductItem key={item.id} {...item} />
+                ))}
             </ProductListContainer>
             <Pagination
                 currentPage={currentPage}
                 range={Math.ceil(itemCounts / 5)}
             />
+            <Loading isLoading={loading} />
         </ProductContainer>
     );
 }

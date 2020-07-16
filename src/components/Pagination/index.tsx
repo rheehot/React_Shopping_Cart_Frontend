@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 import { changeProductListCurrentPage } from 'actions/productListAction';
 import { PaginationProp } from 'components/Pagination/PaginationProp';
 
-const Pagination = ({ currentPage, range }: PaginationProp) => {
+function Pagination({
+    currentPage,
+    range,
+}: PaginationProp): React.ReactElement {
+    const dispatch = useDispatch();
     let pattern = null;
 
     switch (true) {
@@ -41,7 +45,7 @@ const Pagination = ({ currentPage, range }: PaginationProp) => {
             <button
                 disabled={currentPage <= 1}
                 onClick={() =>
-                    useDispatch(changeProductListCurrentPage(currentPage - 1))
+                    dispatch(changeProductListCurrentPage(currentPage - 1))
                 }
             >
                 {'<'}
@@ -50,7 +54,7 @@ const Pagination = ({ currentPage, range }: PaginationProp) => {
                 <button
                     className={currentPage === label ? 'active' : ''}
                     onClick={() =>
-                        useDispatch(changeProductListCurrentPage(label))
+                        dispatch(changeProductListCurrentPage(label))
                     }
                 >
                     {label}
@@ -59,13 +63,13 @@ const Pagination = ({ currentPage, range }: PaginationProp) => {
             <button
                 disabled={currentPage >= range}
                 onClick={() =>
-                    useDispatch(changeProductListCurrentPage(currentPage + 1))
+                    dispatch(changeProductListCurrentPage(currentPage + 1))
                 }
             >
                 {'>'}
             </button>
         </div>
     );
-};
+}
 
 export default Pagination;

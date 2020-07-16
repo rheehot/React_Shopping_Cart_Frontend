@@ -4,10 +4,10 @@ import RootRouter from 'components/Router';
 
 function App(): React.ReactElement {
     return (
-        <>
+        <React.StrictMode>
             <GlobalStyles />
             <RootRouter />
-        </>
+        </React.StrictMode>
     );
 }
 

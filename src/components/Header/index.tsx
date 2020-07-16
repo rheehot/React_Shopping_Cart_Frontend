@@ -48,21 +48,23 @@ const LogoImage = styled.img`
     height: auto;
 `;
 
-export default withRouter(({ location: { pathname } }) => (
-    <Header>
-        <LogoImageContainer>
-            <LogoImage src={logoImage} />
-        </LogoImageContainer>
-        <List>
-            <Item current={pathname === '/'}>
-                <SLink to="/">HOME</SLink>
-            </Item>
-            <Item current={pathname === '/products'}>
-                <SLink to="/products">PRODUCTS</SLink>
-            </Item>
-            <Item current={pathname === '/cart'}>
-                <SLink to="/cart">CART</SLink>
-            </Item>
-        </List>
-    </Header>
-));
+export default withRouter(
+    ({ location: { pathname } }): React.ReactElement => (
+        <Header>
+            <LogoImageContainer>
+                <LogoImage src={logoImage} />
+            </LogoImageContainer>
+            <List>
+                <Item current={pathname === '/'}>
+                    <SLink to="/">HOME</SLink>
+                </Item>
+                <Item current={pathname === '/products'}>
+                    <SLink to="/products">PRODUCTS</SLink>
+                </Item>
+                <Item current={pathname === '/cart'}>
+                    <SLink to="/cart">CART</SLink>
+                </Item>
+            </List>
+        </Header>
+    ),
+);
