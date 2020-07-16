@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import Helemt from 'components/Helmet';
 import ProductItem from 'components/Product/ProductItem';
+import Pagination from 'components/Pagination';
 import { getProductList } from 'actions/productListAction';
 
 const ProductContainer = styled.div`
@@ -14,6 +15,12 @@ const ProductContainer = styled.div`
 `;
 
 const ProductListContainer = styled.ul`
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
     width: 100%;
     padding: 20px 0;
     text-align: center;
@@ -21,7 +28,7 @@ const ProductListContainer = styled.ul`
 
 function Product(): React.ReactElement {
     const dispatch = useDispatch();
-    const { loading, productItems, currentPage } = useSelector(
+    const { loading, productItems, currentPage, itemCounts } = useSelector(
         (state: RootState) => state.product,
     );
 
@@ -41,6 +48,10 @@ function Product(): React.ReactElement {
                     ))
                 )}
             </ProductListContainer>
+            <Pagination
+                currentPage={currentPage}
+                range={Math.ceil(itemCounts / 5)}
+            />
         </ProductContainer>
     );
 }

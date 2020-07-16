@@ -7,7 +7,8 @@ import { FaCartPlus } from 'react-icons/fa';
 
 const ProductItemContainer = styled.li`
     display: inline-flex;
-    width: 30%;
+    min-width: 30%;
+    flex: 1;
     height: auto;
     flex-direction: column;
     margin: 15px;
@@ -49,6 +50,7 @@ const ProductDetailContainer = styled.div`
 const ProductTitle = styled.h2`
     font-size: 14px;
     margin: 10px 0 5px 0;
+    height: 20px;
 `;
 
 const ProductScore = styled.div`
