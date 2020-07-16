@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import ProductItem from './ProductItem';
 import { RootState } from '../../reducers';
+import ProductItem from './ProductItem';
 import { getProductList } from '../../actions/productListAction';
 
 const ProductContainer = styled.div`
@@ -19,7 +19,6 @@ const ProductListContainer = styled.ul`
 `;
 
 function Product(): React.ReactElement {
-    const productItem = [];
     const dispatch = useDispatch();
     const productState = useSelector((state: RootState) => state.product);
 
@@ -30,10 +29,13 @@ function Product(): React.ReactElement {
     return (
         <ProductContainer className="route-container">
             <ProductListContainer>
-                {productItem &&
-                    productItem.map((item) => (
+                {productState.loading ? (
+                    <div>Loading</div>
+                ) : (
+                    productState.productItems.map((item) => (
                         <ProductItem key={item.id} {...item} />
-                    ))}
+                    ))
+                )}
             </ProductListContainer>
         </ProductContainer>
     );

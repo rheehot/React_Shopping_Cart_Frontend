@@ -45,9 +45,9 @@ export function getProductList(
         try {
             let productList = productItems;
 
-            await setTimeout(() => {
-                productList.slice((page - 1) * 5, (page - 1) * 5 + 5);
-            }, 1000);
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            productList.slice((page - 1) * 5, (page - 1) * 5 + 4);
 
             dispatch(success(productList));
         } catch (e) {
