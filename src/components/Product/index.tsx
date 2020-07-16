@@ -21,20 +21,22 @@ const ProductListContainer = styled.ul`
 
 function Product(): React.ReactElement {
     const dispatch = useDispatch();
-    const productState = useSelector((state: RootState) => state.product);
+    const { loading, productItems, currentPage } = useSelector(
+        (state: RootState) => state.product,
+    );
 
     React.useEffect(() => {
-        dispatch(getProductList(productState.currentPage));
-    }, []);
+        dispatch(getProductList(currentPage));
+    }, [currentPage]);
 
     return (
         <ProductContainer className="route-container">
             <Helemt title="PRODUCT" />
             <ProductListContainer>
-                {productState.loading ? (
+                {loading ? (
                     <div>Loading</div>
                 ) : (
-                    productState.productItems.map((item) => (
+                    productItems.map((item) => (
                         <ProductItem key={item.id} {...item} />
                     ))
                 )}

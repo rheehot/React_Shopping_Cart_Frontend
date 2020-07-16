@@ -1,7 +1,7 @@
 import { createAction, createAsyncAction, ActionType } from 'typesafe-actions';
 import { ProductItemType } from 'components/Product/ProductType';
 import { ThunkAction } from 'redux-thunk';
-import productItems from 'data/productItems';
+import productItems from 'data/productItem';
 import { ProductListState } from 'reducers/productListReducer';
 
 export const FETCH_PRODUCT_LIST_REQUEST = '@product/FETCH_PRODUCT_LIST_REQUEST';
@@ -47,7 +47,10 @@ export function getProductList(
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
-            productList = productList.slice((page - 1) * 5, (page - 1) * 5 + 4);
+            productList = productList.sort(
+                (productA, productB) => productB.score - productA.score,
+            );
+            productList = productList.slice((page - 1) * 5, (page - 1) * 5 + 5);
 
             dispatch(success(productList));
         } catch (e) {
