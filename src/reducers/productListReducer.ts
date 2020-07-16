@@ -34,7 +34,7 @@ const productListReducer = createReducer<ProductListState, ProductListAction>(
         [FETCH_PRODUCT_LIST_SUCCESS]: (state, action) => ({
             ...state,
             loading: false,
-            productItems: action.payload,
+            ...action.payload,
         }),
         [FETCH_PRODUCT_LIST_FAILURE]: (state, action) => ({
             ...state,

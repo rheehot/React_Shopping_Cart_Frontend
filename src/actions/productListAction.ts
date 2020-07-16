@@ -1,14 +1,19 @@
-import { createAction, createAsyncAction, ActionType } from 'typesafe-actions';
+import { deprecated, createAsyncAction, ActionType } from 'typesafe-actions';
 import { ProductItemType } from 'components/Product/ProductType';
 import { ThunkAction } from 'redux-thunk';
 import productItems from 'data/productItem';
 import { ProductListState } from 'reducers/productListReducer';
 
-export const FETCH_PRODUCT_LIST_REQUEST = '@product/FETCH_PRODUCT_LIST_REQUEST';
-export const FETCH_PRODUCT_LIST_SUCCESS = '@product/FETCH_PRODUCT_LIST_SUCCESS';
-export const FETCH_PRODUCT_LIST_FAILURE = '@product/FETCH_PRODUCT_LIST_FAILURE';
+export const FETCH_PRODUCT_LIST_REQUEST = 'FETCH_PRODUCT_LIST_REQUEST';
+export const FETCH_PRODUCT_LIST_SUCCESS = 'FETCH_PRODUCT_LIST_SUCCESS';
+export const FETCH_PRODUCT_LIST_FAILURE = 'FETCH_PRODUCT_LIST_FAILURE';
 export const CHANGE_PRODUCT_LIST_CURRENT_PAGE =
-    '@product/CHANGE_PRODUCT_LIST_CURRENT_PAGE';
+    'CHANGE_PRODUCT_LIST_CURRENT_PAGE';
+
+type AsyncActionPayload = {
+    productItems: ProductItemType[];
+    itemCounts: number;
+};
 
 /* ================================== *
  * 상품 목록을 가져오는 비동기 액션   *
@@ -20,13 +25,14 @@ export const fetchProductList = createAsyncAction(
     FETCH_PRODUCT_LIST_REQUEST,
     FETCH_PRODUCT_LIST_SUCCESS,
     FETCH_PRODUCT_LIST_FAILURE,
-)<void, ProductItemType[], string>();
+)<void, AsyncActionPayload, string>();
 
 /* ============================== *
  * 현재 페이지 번호를 바꾸는 액션 *
  * TPayload : 페이지 번호         *
  * ============================== */
-export const changeProductListCurrentPage = createAction(
+const { createStandardAction } = deprecated;
+export const changeProductListCurrentPage = createStandardAction(
     CHANGE_PRODUCT_LIST_CURRENT_PAGE,
 )<number>();
 
@@ -43,7 +49,8 @@ export function getProductList(
         dispatch(request());
 
         try {
-            let productList = productItems;
+            let productList = [...productItems];
+            const itemCounts = productList.length;
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -52,7 +59,7 @@ export function getProductList(
             );
             productList = productList.slice((page - 1) * 5, (page - 1) * 5 + 5);
 
-            dispatch(success(productList));
+            dispatch(success({ productItems: productList, itemCounts }));
         } catch (e) {
             dispatch(failure(e));
         }
