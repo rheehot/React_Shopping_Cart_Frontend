@@ -1,6 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { ProductItemType } from './ProductType';
+import {
+    ProductItemProps,
+    ProductPriceProps,
+} from 'components/Product/ProductProps';
 import { AiFillHeart } from 'react-icons/ai';
 import { RiCoupon2Line } from 'react-icons/ri';
 import { FaCartPlus } from 'react-icons/fa';
@@ -71,17 +74,12 @@ const ProductScoreText = styled.span`
     color: rgb(133, 138, 141);
 `;
 
-type ProductPriceType = {
-    availableCoupon: boolean;
-    color: string;
-};
-
 const ProductPriceContainer = styled.div`
     display: flex;
     align-items: center;
 `;
 
-const ProductPrice = styled.div<ProductPriceType>`
+const ProductPrice = styled.div<ProductPriceProps>`
     display: inline-flex;
     font-size: 12px;
     line-height: 20px;
@@ -142,7 +140,7 @@ function ProductItem({
     price,
     score,
     availableCoupon = true,
-}: ProductItemType): React.ReactElement {
+}: ProductItemProps): React.ReactElement {
     return (
         <ProductItemContainer>
             <ProductImageContainer>

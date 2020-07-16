@@ -1,5 +1,5 @@
 import { deprecated, createAsyncAction, ActionType } from 'typesafe-actions';
-import { ProductItemType } from 'components/Product/ProductType';
+import { ProductItemProps } from 'components/Product/ProductProps';
 import { ThunkAction } from 'redux-thunk';
 import productItems from 'data/productItem';
 import { ProductListState } from 'reducers/productListReducer';
@@ -11,7 +11,7 @@ export const CHANGE_PRODUCT_LIST_CURRENT_PAGE =
     'CHANGE_PRODUCT_LIST_CURRENT_PAGE';
 
 type AsyncActionPayload = {
-    productItems: ProductItemType[];
+    productItems: ProductItemProps[];
     itemCounts: number;
 };
 

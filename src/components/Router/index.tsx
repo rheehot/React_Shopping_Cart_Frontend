@@ -5,17 +5,19 @@ import Header from 'components/Header';
 import Product from 'components/Product';
 import Helemt from 'components/Helmet';
 
-const RootRouter: React.FC = () => (
-    <HashRouter>
-        <Helemt />
-        <Header />
-        <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/products" exact component={Product} />
-            <Route path="/cart" exact component={Home} />
-            <Redirect path="*" to="/" />
-        </Switch>
-    </HashRouter>
-);
+function RootRouter(): React.ReactElement {
+    return (
+        <HashRouter>
+            <Helemt />
+            <Header />
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/products" exact component={Product} />
+                <Route path="/cart" exact component={Home} />
+                <Redirect path="*" to="/" />
+            </Switch>
+        </HashRouter>
+    );
+}
 
 export default RootRouter;

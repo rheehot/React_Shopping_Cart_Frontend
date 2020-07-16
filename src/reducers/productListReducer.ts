@@ -5,13 +5,13 @@ import {
     FETCH_PRODUCT_LIST_FAILURE,
     ProductListAction,
 } from 'actions/productListAction';
-import { ProductItemType } from 'components/Product/ProductType';
+import { ProductItemProps } from 'components/Product/ProductProps';
 import { createReducer } from 'typesafe-actions';
 
 export type ProductListState = {
     loading: boolean;
     currentPage: number;
-    productItems: ProductItemType[];
+    productItems: ProductItemProps[];
     itemCounts: number;
     error?: string;
 };

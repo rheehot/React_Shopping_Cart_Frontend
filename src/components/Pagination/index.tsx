@@ -2,7 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { changeProductListCurrentPage } from 'actions/productListAction';
-import { PaginationProp } from 'components/Pagination/PaginationProp';
+import {
+    PaginationProps,
+    PaginationButtonProps,
+} from 'components/Pagination/PaginationProps';
 
 const PaginationContainer = styled.div`
     width: 100%;
@@ -12,13 +15,7 @@ const PaginationContainer = styled.div`
     align-items: center;
 `;
 
-type PaginationButtonProp = {
-    isActive: boolean;
-    isFirst: boolean;
-    isLast: boolean;
-};
-
-const PaginationButton = styled.button<PaginationButtonProp>`
+const PaginationButton = styled.button<PaginationButtonProps>`
     height: 100%;
     width: 40px;
     margin: 0 5px;
@@ -39,7 +36,7 @@ const PaginationButton = styled.button<PaginationButtonProp>`
 function Pagination({
     currentPage,
     range,
-}: PaginationProp): React.ReactElement {
+}: PaginationProps): React.ReactElement {
     const dispatch = useDispatch();
     let pattern = null;
 
@@ -88,6 +85,7 @@ function Pagination({
             </PaginationButton>
             {pattern.map((label) => (
                 <PaginationButton
+                    key={label}
                     onClick={() =>
                         dispatch(changeProductListCurrentPage(label))
                     }

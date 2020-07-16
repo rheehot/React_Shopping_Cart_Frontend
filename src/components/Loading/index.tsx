@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { LoadingProps } from 'components/Loading/LoadingProps';
 
-const LoadingContainer = styled.div<LoadingProp>`
+const LoadingContainer = styled.div<LoadingProps>`
     background-color: rgba(0, 0, 0, 0.6);
     transition: all 0.8s ease;
     display: ${(prop) => (prop.isLoading ? 'flex' : 'none')};
@@ -39,11 +40,7 @@ const LoadingText = styled.div`
     margin: 15px;
 `;
 
-type LoadingProp = {
-    isLoading: boolean;
-};
-
-function Loading({ isLoading }: LoadingProp): React.ReactElement {
+function Loading({ isLoading }: LoadingProps): React.ReactElement {
     return (
         <LoadingContainer isLoading={isLoading}>
             <Loader />

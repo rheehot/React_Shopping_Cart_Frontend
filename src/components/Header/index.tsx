@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { ItemProps } from 'components/Header/HeaderType';
 import logoImage from 'assets/images/logo.png';
 
-const Header = styled.header`
+const HeaderContainer = styled.header`
     display: flex;
     flex: 1;
     height: 60px;
@@ -33,6 +33,10 @@ const SLink = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        font-weight: 600;
+    }
 `;
 
 const LogoImageContainer = styled.div`
@@ -48,9 +52,11 @@ const LogoImage = styled.img`
     height: auto;
 `;
 
-export default withRouter(
-    ({ location: { pathname } }): React.ReactElement => (
-        <Header>
+function Header({
+    location: { pathname },
+}: RouteComponentProps): React.ReactElement {
+    return (
+        <HeaderContainer>
             <LogoImageContainer>
                 <LogoImage src={logoImage} />
             </LogoImageContainer>
@@ -65,6 +71,8 @@ export default withRouter(
                     <SLink to="/cart">CART</SLink>
                 </Item>
             </List>
-        </Header>
-    ),
-);
+        </HeaderContainer>
+    );
+}
+
+export default withRouter(Header);
