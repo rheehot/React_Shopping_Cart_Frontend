@@ -45,10 +45,12 @@ function Product(): React.ReactElement {
                     <ProductItem key={item.id} {...item} />
                 ))}
             </ProductListContainer>
-            <Pagination
-                currentPage={currentPage}
-                range={Math.ceil(itemCounts / 5)}
-            />
+            {!loading && (
+                <Pagination
+                    currentPage={currentPage}
+                    range={Math.ceil(itemCounts / 5)}
+                />
+            )}
             <Loading isLoading={loading} />
         </ProductContainer>
     );

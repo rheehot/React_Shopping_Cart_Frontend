@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { FaCircleNotch } from 'react-icons/fa';
 
 const LoadingContainer = styled.div<LoadingProp>`
-    opacity: ${(prop) => (prop.isLoading ? 0.4 : 0)};
-    z-index: ${(prop) => (prop.isLoading ? 99 : -99)};
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.8s ease;
     display: ${(prop) => (prop.isLoading ? 'flex' : 'none')};
     flex-direction: column;
     justify-content: center;
@@ -14,26 +13,30 @@ const LoadingContainer = styled.div<LoadingProp>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
 `;
 
-const LoadingIcon = styled(FaCircleNotch)`
-    fill: #fff;
-    width: 5%;
-    height: auto;
-    animation: rotate 1s linear infinite;
+const Loader = styled.div`
+    height: 80px;
+    width: 80px;
+    border: 6px solid #fff;
+    border-top: 6px solid #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 
-    @keyframes rotate {
-        to {
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
             transform: rotate(360deg);
         }
     }
 `;
 
 const LoadingText = styled.div`
-    font-size: 2.5rem;
+    font-size: 28px;
     color: #fff;
-    margin: 10px;
+    margin: 15px;
 `;
 
 type LoadingProp = {
@@ -43,7 +46,7 @@ type LoadingProp = {
 function Loading({ isLoading }: LoadingProp): React.ReactElement {
     return (
         <LoadingContainer isLoading={isLoading}>
-            <LoadingIcon />
+            <Loader />
             <LoadingText>Loading...</LoadingText>
         </LoadingContainer>
     );
