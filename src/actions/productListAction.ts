@@ -47,7 +47,7 @@ export function getProductList(
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
-            productList.slice((page - 1) * 5, (page - 1) * 5 + 4);
+            productList = productList.slice((page - 1) * 5, (page - 1) * 5 + 4);
 
             dispatch(success(productList));
         } catch (e) {
