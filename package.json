@@ -4,8 +4,8 @@
     "description": "🛒 Simply Shopping Cart Application Frontend with React, Redux ⚛︎",
     "main": ".eslint.js",
     "scripts": {
-        "start": "webpack-dev-server --mode development --open --hot",
-        "build": "webpack --mode production"
+        "start": "webpack-dev-server --open --hot --env.NODE_ENV=development",
+        "build": "webpack --env.NODE_ENV=production"
     },
     "repository": {
         "type": "git",
