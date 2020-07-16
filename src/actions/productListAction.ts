@@ -46,7 +46,7 @@ export function getProductList(
             let productList = productItems;
 
             await setTimeout(() => {
-                productList.slice(page * 5, page * 5 + 5);
+                productList.slice((page - 1) * 5, (page - 1) * 5 + 5);
             }, 1000);
 
             dispatch(success(productList));
