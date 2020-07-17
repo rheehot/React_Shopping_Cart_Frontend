@@ -1,8 +1,5 @@
-import { ThunkAction } from 'redux-thunk';
 import { deprecated, createAsyncAction, ActionType } from 'typesafe-actions';
-import productItems from 'data/productItem';
 import { ProductItemProps } from 'models/ProductItem';
-import { ProductListState } from 'reducers/productListReducer';
 
 export const FETCH_PRODUCT_LIST_REQUEST = 'FETCH_PRODUCT_LIST_REQUEST';
 export const FETCH_PRODUCT_LIST_SUCCESS = 'FETCH_PRODUCT_LIST_SUCCESS';
@@ -39,29 +36,3 @@ export const changeProductListCurrentPage = createStandardAction(
 const actions = { fetchProductList, changeProductListCurrentPage };
 
 export type ProductListAction = ActionType<typeof actions>;
-
-export function getProductList(
-    page: number,
-): ThunkAction<Promise<void>, ProductListState, null, ProductListAction> {
-    return async (dispatch) => {
-        const { request, success, failure } = fetchProductList;
-
-        dispatch(request());
-
-        try {
-            let productList = [...productItems];
-            const itemCounts = productList.length;
-
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-
-            productList = productList.sort(
-                (productA, productB) => productB.score - productA.score,
-            );
-            productList = productList.slice((page - 1) * 5, (page - 1) * 5 + 5);
-
-            dispatch(success({ productItems: productList, itemCounts }));
-        } catch (e) {
-            dispatch(failure(e));
-        }
-    };
-}

@@ -1,4 +1,3 @@
-import { ThunkAction } from 'redux-thunk';
 import { deprecated, createAsyncAction, ActionType } from 'typesafe-actions';
 
 export const ADD_COUPON_AT_PRODUCT = 'APPLY_COUPON_AT_PRODUCT';

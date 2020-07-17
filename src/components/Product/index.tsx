@@ -6,7 +6,7 @@ import Helemt from 'components/Helmet';
 import Loading from 'components/Loading';
 import Pagination from 'components/Pagination';
 import ProductItem from 'components/Product/ProductItem';
-import { getProductList } from 'actions/productListAction';
+import { getProductList } from 'actions/thunkAction';
 
 const ProductContainer = styled.div`
     width: 80%;
