@@ -20,7 +20,8 @@ const PaginationButton = styled.button<PaginationButtonProps>`
     width: 40px;
     margin: 0 5px;
     color: ${(props) => (props.isActive ? '#ffffff' : '#000000')};
-    background-color: ${(props) => (props.isActive ? '#000000' : '#f2f2f2')};
+    background-color: ${(props) =>
+        props.isActive ? 'rgba(0, 0, 0, 0.7)' : '#f2f2f2'};
     visibility: ${(props) =>
         props.isFirst || props.isLast ? 'hidden' : 'visible'};
     border: none;
@@ -87,6 +88,7 @@ function Pagination({
                 {pattern.map((label) => (
                     <PaginationButton
                         key={label}
+                        disabled={label === '...'}
                         onClick={() =>
                             dispatch(changeProductListCurrentPage(label))
                         }
