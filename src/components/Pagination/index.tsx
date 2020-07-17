@@ -8,6 +8,8 @@ import {
 } from 'components/Pagination/PaginationProps';
 
 const PaginationContainer = styled.div`
+    position: absolute;
+    bottom: 5%;
     width: 100%;
     height: 40px;
     display: flex;

@@ -43,11 +43,11 @@ function Product(): React.ReactElement {
                 {productItems.map((item) => (
                     <ProductItem key={item.id} {...item} />
                 ))}
+                <Pagination
+                    currentPage={currentPage}
+                    range={Math.ceil(itemCounts / 5)}
+                />
             </ProductListContainer>
-            <Pagination
-                currentPage={currentPage}
-                range={Math.ceil(itemCounts / 5)}
-            />
             <Loading isLoading={loading} />
         </ProductContainer>
     );
