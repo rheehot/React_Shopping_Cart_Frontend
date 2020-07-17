@@ -3,6 +3,7 @@ import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Home from 'components/Home';
 import Header from 'components/Header';
 import Product from 'components/Product';
+import Cart from 'components/Cart';
 import Helemt from 'components/Helmet';
 
 function RootRouter(): React.ReactElement {
@@ -13,7 +14,7 @@ function RootRouter(): React.ReactElement {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/products" exact component={Product} />
-                <Route path="/cart" exact component={Home} />
+                <Route path="/cart" exact component={Cart} />
                 <Redirect path="*" to="/" />
             </Switch>
         </HashRouter>
