@@ -5,8 +5,8 @@ import {
     FETCH_PRODUCT_LIST_FAILURE,
     ProductListAction,
 } from 'actions/productListAction';
-import { ProductItemProps } from 'components/Product/ProductProps';
 import { createReducer } from 'typesafe-actions';
+import { ProductItemProps } from 'models/ProductItem';
 
 export type ProductListState = {
     loading: boolean;

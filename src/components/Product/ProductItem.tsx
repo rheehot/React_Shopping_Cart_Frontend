@@ -1,12 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {
-    ProductItemProps,
-    ProductPriceProps,
-} from 'components/Product/ProductProps';
+import { FaCartPlus } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 import { RiCoupon2Line } from 'react-icons/ri';
-import { FaCartPlus } from 'react-icons/fa';
+import { ProductItemProps } from 'models/ProductItem';
+import { ProductPriceProps } from 'components/Product/ProductProps';
 
 const ProductItemContainer = styled.li`
     display: inline-flex;

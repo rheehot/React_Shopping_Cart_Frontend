@@ -1,7 +1,7 @@
-import { deprecated, createAsyncAction, ActionType } from 'typesafe-actions';
-import { ProductItemProps } from 'components/Product/ProductProps';
 import { ThunkAction } from 'redux-thunk';
+import { deprecated, createAsyncAction, ActionType } from 'typesafe-actions';
 import productItems from 'data/productItem';
+import { ProductItemProps } from 'models/ProductItem';
 import { ProductListState } from 'reducers/productListReducer';
 
 export const FETCH_PRODUCT_LIST_REQUEST = 'FETCH_PRODUCT_LIST_REQUEST';

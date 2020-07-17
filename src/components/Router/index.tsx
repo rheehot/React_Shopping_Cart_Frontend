@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Home from 'components/Home';
-import Header from 'components/Header';
-import Product from 'components/Product';
 import Cart from 'components/Cart';
 import Helemt from 'components/Helmet';
+import Header from 'components/Header';
+import Product from 'components/Product';
 
 function RootRouter(): React.ReactElement {
     return (

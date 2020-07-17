@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { RootState } from 'reducers';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'reducers';
 import Helemt from 'components/Helmet';
-import ProductItem from 'components/Product/ProductItem';
-import Pagination from 'components/Pagination';
 import Loading from 'components/Loading';
+import Pagination from 'components/Pagination';
+import ProductItem from 'components/Product/ProductItem';
 import { getProductList } from 'actions/productListAction';
 
 const ProductContainer = styled.div`
