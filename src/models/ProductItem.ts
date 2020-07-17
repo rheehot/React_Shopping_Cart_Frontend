@@ -1,4 +1,4 @@
-export type ProductItemProps = {
+export type ProductItem = {
     id: string;
     title: string;
     coverImage: string;

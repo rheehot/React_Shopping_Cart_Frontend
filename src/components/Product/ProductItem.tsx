@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaCartPlus } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 import { RiCoupon2Line } from 'react-icons/ri';
-import { ProductItemProps } from 'models/ProductItem';
+import { ProductItem } from 'models/ProductItem';
 import { ProductPriceProps } from 'components/Product/ProductProps';
 
 const ProductItemContainer = styled.li`
@@ -138,7 +138,7 @@ function ProductItem({
     price,
     score,
     availableCoupon = true,
-}: ProductItemProps): React.ReactElement {
+}: ProductItem): React.ReactElement {
     return (
         <ProductItemContainer>
             <ProductImageContainer>
